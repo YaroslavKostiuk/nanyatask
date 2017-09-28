@@ -1,14 +1,24 @@
-window.onload = function () {
+(function (window) {
+
+    'use strict';
+
     var contactList = [];
-    if (localStorage.getItem('list') != undefined) {
+
+    window.editCheckedLine = editCheckedLine;
+    document.getElementById('sub').onsubmit = sumElementSubmit;
+
+    if (localStorage.getItem('list')) {
         contactList = JSON.parse(localStorage.getItem('list'));
         out();
     }
-    document.getElementById('sub').onsubmit = function () {
-        var name = document.getElementById('name').value;
-        var surname = document.getElementById('surname').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('number').value;
+
+
+    function sumElementSubmit () {
+        var name = document.getElementById('name').value,
+            surname = document.getElementById('surname').value,
+            email = document.getElementById('email').value,
+            phone = document.getElementById('number').value;
+
         contactList.push({
             name: name,
             surname: surname,
@@ -22,19 +32,23 @@ window.onload = function () {
 
     }
 
+    function editCheckedLine() {
+        alert('Im work!');
+    }
 
     function out () {
         var out='';
         for (var key in contactList) {
-            if (contactList[key].check == true){
-                out += '<input type ="checkbox" checked>';
+            if (contactList[key].check){
+                out += '<input type ="checkbox" name ="' + key + '" checked>';
             }
             else {
-                out += '<input type="checkbox">';
+                out += '<input type="checkbox" name =\"' + key + '\">';
             }
             out += contactList[key].name + '<br>';
         }
         document.getElementById('out').innerHTML = out;
 
     }
-}
+
+})(window);

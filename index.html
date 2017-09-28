@@ -1,22 +1,24 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <title>Document</title>
-     <link rel="stylesheet" href="style.css">
-     <script src="index.js"></script>
- </head>
- <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Create new contact</h2>
     <form id="sub">
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="text" id="surname" placeholder="Surname" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="text" id="number" pattern="2-[0-9]{3}-[0-9]{3}" placeholder="Phone number" required>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="surname" placeholder="Surname" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="number" pattern="2-[0-9]{3}-[0-9]{3}" placeholder="Phone number" required>
 
-            <input type="submit" value="Add new">
+        <button type="submit">Create</button>
     </form>
 
     <hr>
-    <table id="out"></table>
- </body>
- </html>
+    <table id="out" name="outList"></table>
+    <p><input type="button" value="Edit" name="edit" onclick="editCheckedLine()" /></p>
+    <script src="index.js"></script>
+</body>
+</html>
